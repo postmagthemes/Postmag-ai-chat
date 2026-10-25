@@ -1,0 +1,15 @@
+.pmaic-admin .pmaic-card { background: #fff; border: 1px solid #dcdcde; border-radius: 6px; padding: 4px 20px 12px; max-width: 820px; margin: 16px 0; }
+.pmaic-admin .pmaic-ok { color: #00a32a; font-weight: 600; }
+.pmaic-admin .pmaic-warn { color: #996800; font-weight: 600; }
+.pmaic-admin .pmaic-err { color: #d63638; }
+.pmaic-admin .pmaic-inline { display: inline-block; margin-right: 16px; }
+.pmaic-admin .pmaic-gap { margin-left: 16px; }
+.pmaic-admin .pmaic-provider-section[hidden] { display: none; }
+.pmaic-admin .pmaic-provider-section { margin-top: 0; }
+.pmaic-admin .pmaic-load-models { vertical-align: middle; }
+.pmaic-admin .pmaic-log td { vertical-align: top; }
+.pmaic-admin .pmaic-when { width: 140px; }
+.pmaic-admin .pmaic-q { font-weight: 600; }
+.pmaic-admin .pmaic-answer { white-space: pre-wrap; margin-top: 6px; }
+.pmaic-admin .pmaic-badge { display: inline-block; background: #fcf0f1; color: #8a2424; border-radius: 3px; padding: 1px 6px; font-size: 11px; margin-left: 6px; font-weight: 400; }
+.pmaic-admin a.current { font-weight: 600; color: #1d2327; }

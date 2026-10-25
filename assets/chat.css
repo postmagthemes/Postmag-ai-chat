@@ -1,0 +1,112 @@
+/* PostMag AI Chat – widget styles (scoped to .pmaic to avoid theme conflicts) */
+.pmaic {
+	--pmaic-accent: #2563eb;
+	--pmaic-bg: #ffffff;
+	--pmaic-text: #1f2937;
+	--pmaic-muted: #6b7280;
+	--pmaic-soft: #f3f4f6;
+	--pmaic-border: #e5e7eb;
+	position: fixed;
+	bottom: 20px;
+	z-index: 99999;
+	font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	color: var(--pmaic-text);
+}
+.pmaic--right { right: 20px; }
+.pmaic--left { left: 20px; }
+.pmaic *, .pmaic *::before, .pmaic *::after { box-sizing: border-box; }
+
+.pmaic button { font: inherit; margin: 0; cursor: pointer; text-transform: none; letter-spacing: normal; box-shadow: none; }
+
+/* Launcher */
+.pmaic .pmaic-launcher {
+	width: 58px; height: 58px; border-radius: 50%; border: 0; padding: 0;
+	background: var(--pmaic-accent); color: #fff;
+	display: flex; align-items: center; justify-content: center;
+	box-shadow: 0 6px 20px rgba(0,0,0,.18);
+	transition: transform .15s ease;
+}
+.pmaic .pmaic-launcher:hover { transform: scale(1.06); }
+.pmaic .pmaic-launcher:focus-visible { outline: 3px solid var(--pmaic-accent); outline-offset: 3px; }
+.pmaic--left .pmaic-launcher { margin-right: auto; }
+.pmaic--right .pmaic-launcher { margin-left: auto; }
+
+/* Panel */
+.pmaic .pmaic-panel {
+	position: absolute; bottom: 72px;
+	width: 370px; max-width: calc(100vw - 32px);
+	height: 560px; max-height: calc(100vh - 110px);
+	background: var(--pmaic-bg);
+	border: 1px solid var(--pmaic-border);
+	border-radius: 16px;
+	box-shadow: 0 16px 48px rgba(0,0,0,.2);
+	display: flex; flex-direction: column; overflow: hidden;
+	animation: pmaic-in .18s ease-out;
+}
+.pmaic .pmaic-panel[hidden] { display: none; }
+.pmaic--right .pmaic-panel { right: 0; }
+.pmaic--left .pmaic-panel { left: 0; }
+@keyframes pmaic-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.pmaic .pmaic-head {
+	display: flex; align-items: center; justify-content: space-between; gap: 8px;
+	padding: 14px 14px 14px 18px; background: var(--pmaic-accent); color: #fff;
+}
+.pmaic .pmaic-title { display: flex; flex-direction: column; line-height: 1.25; }
+.pmaic .pmaic-title strong { font-size: 16px; }
+.pmaic .pmaic-sub { font-size: 12px; opacity: .85; }
+.pmaic .pmaic-actions { display: flex; gap: 2px; }
+.pmaic .pmaic-icon {
+	width: 32px; height: 32px; border: 0; border-radius: 8px; padding: 0;
+	background: transparent; color: #fff; font-size: 20px; line-height: 1;
+}
+.pmaic .pmaic-icon:hover { background: rgba(255,255,255,.18); }
+
+/* Messages */
+.pmaic .pmaic-log { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; background: #fafafa; }
+.pmaic .pmaic-msg { max-width: 86%; padding: 10px 14px; border-radius: 14px; word-wrap: break-word; }
+.pmaic .pmaic-msg p { margin: 0 0 8px; }
+.pmaic .pmaic-msg p:last-child { margin-bottom: 0; }
+.pmaic .pmaic-msg ul { margin: 4px 0 8px; padding-left: 20px; }
+.pmaic .pmaic-msg li { margin: 2px 0; }
+.pmaic .pmaic-msg code { background: rgba(0,0,0,.06); padding: 1px 4px; border-radius: 4px; font-size: 13px; }
+.pmaic .pmaic-msg--assistant { align-self: flex-start; background: var(--pmaic-bg); border: 1px solid var(--pmaic-border); border-bottom-left-radius: 4px; }
+.pmaic .pmaic-msg--user { align-self: flex-end; background: var(--pmaic-accent); color: #fff; border-bottom-right-radius: 4px; white-space: pre-wrap; }
+.pmaic .pmaic-msg--error { border-color: #fecaca; background: #fef2f2; color: #991b1b; }
+.pmaic .pmaic-msg a { color: var(--pmaic-accent); text-decoration: underline; }
+.pmaic .pmaic-sources { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--pmaic-border); font-size: 12px; color: var(--pmaic-muted); }
+
+.pmaic .pmaic-typing { display: flex; gap: 4px; padding: 14px; }
+.pmaic .pmaic-typing span { width: 7px; height: 7px; border-radius: 50%; background: var(--pmaic-muted); animation: pmaic-dot 1s infinite ease-in-out; }
+.pmaic .pmaic-typing span:nth-child(2) { animation-delay: .15s; }
+.pmaic .pmaic-typing span:nth-child(3) { animation-delay: .3s; }
+@keyframes pmaic-dot { 0%, 80%, 100% { opacity: .3; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-3px); } }
+
+/* Input */
+.pmaic .pmaic-form { display: flex; align-items: flex-end; gap: 8px; padding: 10px 12px; border-top: 1px solid var(--pmaic-border); background: var(--pmaic-bg); margin: 0; }
+.pmaic .pmaic-input {
+	flex: 1; resize: none; min-height: 40px; max-height: 110px; margin: 0;
+	padding: 9px 12px; border: 1px solid var(--pmaic-border); border-radius: 10px;
+	font: inherit; color: var(--pmaic-text); background: var(--pmaic-bg); box-shadow: none;
+}
+.pmaic .pmaic-input:focus { outline: none; border-color: var(--pmaic-accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--pmaic-accent) 25%, transparent); }
+.pmaic .pmaic-send {
+	width: 40px; height: 40px; flex: none; border: 0; border-radius: 10px; padding: 0;
+	background: var(--pmaic-accent); color: #fff; display: flex; align-items: center; justify-content: center;
+}
+.pmaic .pmaic-send:disabled { opacity: .5; cursor: default; }
+.pmaic .pmaic-foot { padding: 0 12px 10px; font-size: 11px; color: var(--pmaic-muted); text-align: center; background: var(--pmaic-bg); }
+.pmaic .pmaic-foot a { color: var(--pmaic-muted); text-decoration: underline; }
+
+/* Mobile: full-screen panel */
+@media (max-width: 480px) {
+	.pmaic { bottom: 14px; }
+	.pmaic--right { right: 14px; }
+	.pmaic--left { left: 14px; }
+	.pmaic.is-open .pmaic-launcher { display: none; }
+	.pmaic .pmaic-panel { position: fixed; inset: 0; width: 100%; max-width: none; height: 100%; max-height: none; border-radius: 0; border: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.pmaic .pmaic-panel, .pmaic .pmaic-typing span { animation: none; }
+}
